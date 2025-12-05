@@ -9,7 +9,7 @@ langchain-community
 langchain-core
 langchain-groq
 langchain-huggingface
-
+langchain-google-genai
 # Vectorstore
 pinecone
 
