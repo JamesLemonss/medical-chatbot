@@ -4,27 +4,26 @@ from modules.llm import get_llm_chain
 from modules.query_handlers import query_chain
 from langchain_core.documents import Document
 from langchain_core.retrievers import BaseRetriever
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from langchain_huggingface import HuggingFaceEmbeddings
 from pinecone import Pinecone
 from pydantic import Field
 from typing import List, Optional
 from logger import logger
 import os
 
-router=APIRouter()
+router = APIRouter()
 
 @router.post("/ask/")
 async def ask_question(question: str = Form(...)):
     try:
         logger.info(f"user query: {question}")
 
-        # Embed model + Pinecone setup
+        # Use pre-loaded model from main.py
+        from main import embed_model
+        
+        # Pinecone setup
         pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
         index = pc.Index(os.environ["PINECONE_INDEX_NAME"])
-        embed_model = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+        
         embedded_query = embed_model.embed_query(question)
         res = index.query(vector=embedded_query, top_k=3, include_metadata=True)
 
