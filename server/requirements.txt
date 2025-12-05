@@ -1,0 +1,31 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# LangChain & Ecosystem
+langchain
+langchain-community
+langchain-core
+langchain-groq
+langchain-huggingface
+
+# Vectorstore
+pinecone
+
+# Embeddings
+sentence-transformers
+
+# PDF Parsing
+pypdf
+
+# Environment Variables
+python-dotenv
+
+# Typing & Utilities
+pydantic
+requests
+tqdm
+
+# Logging
+loguru
