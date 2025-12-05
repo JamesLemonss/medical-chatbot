@@ -8,13 +8,9 @@ langchain
 langchain-community
 langchain-core
 langchain-groq
-langchain-huggingface
 langchain-google-genai
 # Vectorstore
 pinecone
-
-# Embeddings
-sentence-transformers
 
 # PDF Parsing
 pypdf

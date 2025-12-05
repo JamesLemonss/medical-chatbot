@@ -6,13 +6,13 @@ from tqdm.auto import tqdm
 from pinecone import Pinecone, ServerlessSpec
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
-
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from config import embed_model
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_ENV = "us-east-1"
-PINECONE_INDEX_NAME = "medical"
+PINECONE_INDEX_NAME = "medicalv2"
 
 UPLOAD_DIR = "./uploaded_docs"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -25,7 +25,7 @@ existing_indexes = [i["name"] for i in pc.list_indexes()]
 if PINECONE_INDEX_NAME not in existing_indexes:
     pc.create_index(
         name=PINECONE_INDEX_NAME,
-        dimension=384,  # Changed from 768 to match new model
+        dimension=768,  # Changed from 768 to match new model
         metric="cosine",  # Changed from dotproduct
         spec=spec
     )
@@ -36,9 +36,6 @@ index = pc.Index(PINECONE_INDEX_NAME)
 
 def load_vectorstore(uploaded_files):
     # Free unlimited embeddings from HuggingFace
-    embed_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
     
     file_paths = []
 

@@ -9,7 +9,7 @@ from pydantic import Field
 from typing import List, Optional
 from logger import logger
 import os
-
+from config import embed_model
 router = APIRouter()
 
 @router.post("/ask/")
@@ -18,7 +18,6 @@ async def ask_question(question: str = Form(...)):
         logger.info(f"user query: {question}")
 
         # Use pre-loaded model from main.py
-        from main import embed_model
         
         # Pinecone setup
         pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])

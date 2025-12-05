@@ -3,25 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from middlewares.exception_handlers import catch_exception_middleware
 from routes.upload_pdfs import router as upload_router
 from routes.ask_question import router as ask_router
-from contextlib import asynccontextmanager
 import os
 
-# Pre-load model on startup
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Startup: Load the model once
-    from langchain_huggingface import HuggingFaceEmbeddings
-    global embed_model
-    embed_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
-    yield
-    # Shutdown: cleanup if needed
+# Import embed_model (it gets initialized when imported)
+from config import embed_model
 
 app = FastAPI(
     title="Medical Assistant API",
-    description="API for AI Medical Assistant Chatbot",
-    lifespan=lifespan
+    description="API for AI Medical Assistant Chatbot"
 )
 
 # CORS Setup
