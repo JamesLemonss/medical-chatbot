@@ -25,3 +25,7 @@ tqdm
 
 # Logging
 loguru
+
+# Database
+sqlalchemy
+psycopg2-binary

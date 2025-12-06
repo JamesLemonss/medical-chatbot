@@ -10,6 +10,8 @@ from typing import List, Optional
 from logger import logger
 import os
 from config import embed_model
+from database import SessionLocal, Conversation
+
 router = APIRouter()
 
 @router.post("/ask/")
@@ -17,8 +19,6 @@ async def ask_question(question: str = Form(...)):
     try:
         logger.info(f"user query: {question}")
 
-        # Use pre-loaded model from main.py
-        
         # Pinecone setup
         pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
         index = pc.Index(os.environ["PINECONE_INDEX_NAME"])
@@ -47,6 +47,26 @@ async def ask_question(question: str = Form(...)):
         retriever = SimpleRetriever(docs)
         chain = get_llm_chain(retriever)
         result = query_chain(chain, question)
+
+        # Save to database
+        # Save to database
+        db = SessionLocal()
+        try:
+    # Try different possible response formats
+            bot_answer = result.get("response", "No response")
+    
+            conversation = Conversation(
+        user_message=question,
+        bot_response=bot_answer
+        )
+            db.add(conversation)
+            db.commit()
+            logger.info("Conversation saved to database")
+        except Exception as db_error:
+            logger.error(f"Database save error: {db_error}")
+            db.rollback()
+        finally:
+            db.close()
 
         logger.info("query successful")
         return result
