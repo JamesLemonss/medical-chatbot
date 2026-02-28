@@ -12,7 +12,7 @@ load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_ENV = "us-east-1"
-PINECONE_INDEX_NAME = "medicalv2"
+PINECONE_INDEX_NAME = "medicalv3"
 
 UPLOAD_DIR = "./uploaded_docs"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -25,8 +25,8 @@ existing_indexes = [i["name"] for i in pc.list_indexes()]
 if PINECONE_INDEX_NAME not in existing_indexes:
     pc.create_index(
         name=PINECONE_INDEX_NAME,
-        dimension=768,  # Changed from 768 to match new model
-        metric="cosine",  # Changed from dotproduct
+        dimension=768,  # Matches the 'output_dimensionality' in config.py
+        metric="cosine", 
         spec=spec
     )
     while not pc.describe_index(PINECONE_INDEX_NAME).status["ready"]:
