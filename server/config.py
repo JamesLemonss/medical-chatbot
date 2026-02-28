@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Initialize embeddings once
 embed_model = GoogleGenerativeAIEmbeddings(
     model="models/text-embedding-004",
-    google_api_key=os.getenv("GOOGLE_API_KEY")
+    google_api_key=os.getenv("GOOGLE_API_KEY"),
+    task_type="retrieval_document"
 )
