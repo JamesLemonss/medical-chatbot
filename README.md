@@ -1,4 +1,4 @@
-# 🏥 Medical Assistant Chatbot (Baymax)
+Medical Assistant Chatbot (Baymax)
 
 A production-ready AI-powered medical chatbot built with RAG (Retrieval-Augmented Generation) architecture. Upload medical documents and ask questions powered by state-of-the-art language models.
 
@@ -8,7 +8,7 @@ A production-ready AI-powered medical chatbot built with RAG (Retrieval-Augmente
 
 ---
 
-## 📋 Table of Contents
+Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -26,7 +26,7 @@ A production-ready AI-powered medical chatbot built with RAG (Retrieval-Augmente
 
 ---
 
-## 🎯 Overview
+Overview
 
 This medical assistant chatbot allows users to:
 - **Upload medical documents** (PDFs like textbooks, research papers, clinical notes)
@@ -38,24 +38,24 @@ The system uses **Retrieval-Augmented Generation (RAG)** to ensure responses are
 
 ---
 
-## ✨ Features
+Features
 
 ### Core Functionality
-- 📄 **PDF Upload & Processing**: Automatic text extraction and chunking
-- 🔍 **Semantic Search**: Vector embeddings stored in Pinecone for fast retrieval
-- 🤖 **AI-Powered Responses**: LLaMA3-70B via Groq API
-- 💾 **Conversation Logging**: PostgreSQL database stores all interactions
-- 🌐 **Web Interface**: Modern, responsive Next.js frontend
+- PDF Upload & Processing**: Automatic text extraction and chunking
+- Semantic Search**: Vector embeddings stored in Pinecone for fast retrieval
+- AI-Powered Responses**: LLaMA3-70B via Groq API
+- Conversation Logging**: PostgreSQL database stores all interactions
+- Web Interface**: Modern, responsive Next.js frontend
 
 ### Technical Features
-- ⚡ **Fast Inference**: Groq's LPU architecture for sub-second responses
-- 🔒 **Secure Deployment**: Environment-based configuration
-- 📊 **Analytics Ready**: Database schema designed for conversation analysis
-- 🚀 **Production Deployment**: Hosted on Render (backend) + Vercel (frontend)
+- Fast Inference**: Groq's LPU architecture for sub-second responses
+- Secure Deployment**: Environment-based configuration
+- Analytics Ready**: Database schema designed for conversation analysis
+- Production Deployment**: Hosted on Render (backend) + Vercel (frontend)
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────┐
@@ -168,9 +168,9 @@ pypdf==5.1.0
 
 ---
 
-## 🚀 Getting Started
+Getting Started
 
-### Prerequisites
+Prerequisites
 
 - **Node.js** 18+ and npm
 - **Python** 3.11+
@@ -234,9 +234,9 @@ Frontend will be available at `http://localhost:3000`
 
 ---
 
-## 🌐 Deployment
+Deployment
 
-### Backend (Render)
+Backend (Render)
 
 1. **Create Account**: Sign up at [Render.com](https://render.com)
 
@@ -282,7 +282,7 @@ Frontend will be available at `http://localhost:3000`
 
 ---
 
-## 🗄️ Database Schema
+Database Schema
 
 ### `conversations` Table
 
@@ -324,7 +324,7 @@ WHERE bot_response NOT LIKE '%No response%';
 
 ---
 
-## 📡 API Documentation
+API Documentation
 
 ### Base URL
 - **Local**: `http://localhost:8000`
@@ -375,7 +375,7 @@ curl -X POST "http://localhost:8000/ask/" \
 
 ---
 
-## 🔐 Environment Variables
+Environment Variables
 
 ### Backend (`server/.env`)
 
@@ -394,7 +394,7 @@ curl -X POST "http://localhost:8000/ask/" \
 
 ---
 
-## 🐛 Troubleshooting
+Troubleshooting
 
 ### Backend Issues
 
@@ -428,7 +428,7 @@ curl -X POST "http://localhost:8000/ask/" \
 
 ---
 
-## 🔮 Future Improvements
+Future Improvements
 
 ### Planned Features
 - [ ] **User Authentication**: Session management with user accounts
@@ -454,7 +454,7 @@ curl -X POST "http://localhost:8000/ask/" \
 
 ---
 
-## 🤝 Contributing
+Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -466,13 +466,13 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📄 License
+License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+Acknowledgments
 
 - **LangChain**: For the RAG orchestration framework
 - **Groq**: For blazing-fast LLM inference
@@ -483,7 +483,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📧 Contact
+Contact
 
 **Developer**: James Lemonss  
 **GitHub**: [@JamesLemonss](https://github.com/JamesLemonss)  
