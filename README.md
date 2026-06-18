@@ -491,6 +491,4 @@ Contact
 
 ---
 
-**⭐ If you find this project helpful, please give it a star!**
 
-Built with ❤️ using Next.js, FastAPI, and cutting-edge AI technology.
